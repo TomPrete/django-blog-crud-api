@@ -1,0 +1,10 @@
+<h1>Locations</h1>
+
+{% for address_info in all_addresses %}
+  <div>
+    <p>{{ address_info.address.line_1 }}</p>
+    <p>{{ address_info.address.line_2 }}</p>
+    <p>{{ address_info.address.city }}, {{ address_info.address.state }} {{ address_info.address.zip_code }}</p>
+    <h2>Current Temperature: {{ address_info.temp }} degrees</h2>
+  </div>
+{% endfor %}

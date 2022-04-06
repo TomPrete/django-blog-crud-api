@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h1>Here's a comment for {{ post.title }}</h1>
+  <div>
+    <h2>{{ comment.comment_text }}</h2>
+    <p>Author: {{ comment.comment_author|capfirst}}</p>
+  </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+  <title>All Posts</title>
+{% endblock %}
+
+{% block content %}
+  {% for post in all_posts %}
+    <div class="post">
+      <div class="date">
+        <p>Published: {{ post.published_date }}</p>
+      </div>
+      <h2><a href="{% url 'post_detail' post_id=post.id %}">{{ post.title }}</a></h2>
+      <p>{{ post.text|linebreaksbr }}</p>
+      <div>
+        {% with total_comments=post.comments.count %}
+          <a href="{% url 'comment_list' post_id=post.id  %}">{{ total_comments }} comment{{ total_comments|pluralize }}</a>
+        {% endwith %}
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}
