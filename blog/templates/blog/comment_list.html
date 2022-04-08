@@ -1,10 +1,18 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<h1>All comments for {{ post.title }}</h1>
-  {% for comment in comments %}
-    <div>
-      <h2><a href="{% url 'comment_detail' post_id=post.id comment_id=comment.id %}">{{ comment.comment_text }}</a></h2>
+{% if post %}
+  <h1>All comments for {{ post.title }}</h1>
+  {% else %}
+  <h1>All Comments</h1>
+{% endif %}
+{% for comment in comments %}
+<div>
+      {% if post %}
+        <h2><a href="{% url 'comment_detail' post_id=post.id comment_id=comment.id %}">{{ comment.comment_text }}</a></h2>
+        {% else %}
+        <h2><a href="{% url 'comment_detail' post_id=comment.post.id comment_id=comment.id %}">{{ comment.comment_text }}</a></h2>
+      {% endif %}
       <p>Author: {{ comment.comment_author|capfirst}}</p>
     </div>
   {% endfor %}

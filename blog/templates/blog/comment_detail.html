@@ -5,5 +5,7 @@
   <div>
     <h2>{{ comment.comment_text }}</h2>
     <p>Author: {{ comment.comment_author|capfirst}}</p>
+    <a class="btn btn-default" href="{% url 'edit_comment' post_id=post.id comment_id=comment.id %}"><span class="badge bg-secondary">Edit</span></a>
+    <a href="{% url 'delete_comment' post_id=post.id comment_id=comment.id %}">Delete This Comment</a>
   </div>
 {% endblock %}

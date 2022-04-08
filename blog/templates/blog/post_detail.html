@@ -11,7 +11,7 @@
     <h2>{{ post.title }}</h2>
     <p>{{ post.text|linebreaksbr }}</p>
     <a href="{% url 'delete_post' post_id=post.id %}">Delete This Post</a>
-
+    <a href="{% url 'new_comment' post_id=post.id %}">Write a New Comment</a>
     <div>
       {% for comment in post.comments.all %}
         <div>
